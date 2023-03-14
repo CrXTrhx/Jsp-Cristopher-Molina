@@ -14,6 +14,8 @@
         <title>JSP 1</title>
     </head>
     <body>
+      
+        <br>
        <div class="container-sm">Hola jsp</div>
         <div class="card">
         <div class="card-body">
