@@ -4,6 +4,9 @@
     Author     : CrX26
 --%>
 
+<%@page import="java.util.Collections"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,49 +20,59 @@
     <body>
                
         <h1 class="display-3"><center>Números</center></h1>
+        <a href="jsp2.jsp" style="text-decoration: none" class="fs-3"><font color="black"><center>Ir a Jsp2</center></a>
         <hr>
-        <% 
-            String num = request.getParameter( "num" );
-            
-            int cuantos = Integer.parseInt(num);
-            
-            for (int i = 0; i < cuantos; i++) {
-                               
-            int x = (int)(Math.random() * 100);
-            if(x < 50)
-            {
-        %>
-        <h1>Es menor a 50</h1>
-        <% 
-            }
-            else{
-                if (x >= 50) {
-                        
-                    
-               {
-        %>
-        <h1>Es mayor o igual a 50</h1>
-        <% 
-            }
-            }
-            else{
-                if (x == 0 || num == "a") {
-                                        
-            
-        %>
-             <h3>El numero es nulo</h3>
-        <% 
-                 }
-                }
-            
-        %>
-            
-        
-        <h2>El numero es: <%= x%></h2>
-        <hr>
-        <%
-            }
-        %>
+         
+   
+      
+  
+    
+      
+
+
+                <% String num = request.getParameter("num");%>
+                
+                <%
+                    int numero=0;
+                    if (num != null && !num.isEmpty()) {
+                            numero=Integer.parseInt(num);
+                        }
+                %>
+                <%
+                    if (num != null && !num.isEmpty()) {
+                    List<Integer> numAle=new ArrayList<>();
+                    for (int i = 0; i < numero; i++) {
+                            int numerosAle=(int)(Math.random() * 100);
+                            numAle.add(numerosAle);
+                %>
+                <div class="container" style="align-items: center" >
+                <div class="row align-items-start" >
+                     <div class="col">
+                    <h2>El número es: <%=numerosAle%></h2>
+                </div>
+                <%
+                    }
+                    Collections.sort(numAle);
+                %>
+                <div class="col" >
+                <h2>Los números ordenados son:</h2>
+                
+                <%
+                    for(int numeAle : numAle){ %>
+                    <h2><%out.print(numeAle);%></h2>
+                <%
+                    }
+                    }
+                    else{
+                %>
+                    <h1>Sin dato</h1></div></div>
+                      </div>
+                <%
+                    }
+                %>
+                
+                
+                
 
 
     </body>
